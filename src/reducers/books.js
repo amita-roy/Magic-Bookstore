@@ -1,10 +1,10 @@
-import { CREATE_BOOK, REMOVE_BOOK } from '../actions';
+import { ACTIONS } from '../actions';
 
 const bookReducer = (state = {}, action) => {
   switch (action.type) {
-    case CREATE_BOOK:
+    case ACTIONS.CREATE_BOOK:
       return [...state, action.payload];
-    case REMOVE_BOOK:
+    case ACTIONS.REMOVE_BOOK:
       return state.filter((book) => book.id !== action.payload);
     default:
       return state;
