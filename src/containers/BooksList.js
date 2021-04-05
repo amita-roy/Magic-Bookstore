@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Book from '../components/book/Book';
@@ -8,7 +8,12 @@ import * as actions from '../actions';
 import './BookList.css';
 
 const BooksList = (props) => {
-  const { books, bookFilter } = props;
+  const { books, bookFilter, fetchBooks } = props;
+
+  useEffect(() => {
+    fetchBooks();
+  }, []);
+
   const handleRemoveBook = (event, book) => {
     event.preventDefault();
     props.removeBook(book.id);
@@ -40,12 +45,17 @@ const BooksList = (props) => {
 };
 
 BooksList.propTypes = {
-  books: PropTypes.instanceOf(Array).isRequired,
+  books: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+    })
+  ).isRequired,
   removeBook: PropTypes.func.isRequired,
   bookFilter: PropTypes.string.isRequired,
+  fetchBooks: PropTypes.func.isRequired,
 };
 const mapStateToProps = (state) => ({
-  books: state.bookReducer,
+  books: state.books,
   bookFilter: state.filterReducer,
 });
 

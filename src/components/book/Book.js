@@ -12,7 +12,7 @@ const Book = (props) => {
       <div className="left-side">
         <div className="category">{book.category}</div>
         <div className="title">{book.title}</div>
-        <div className="link author">Suzanne Collins</div>
+        <div className="link author">{book.author}</div>
         <div className="bottom-row">
           <div className="link br">Comments</div>
           <button

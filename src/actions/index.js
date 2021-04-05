@@ -1,8 +1,17 @@
+import Bookstore from '../apis/bookstore';
+
 export const ACTIONS = Object.freeze({
+  FETCH_BOOKS: 'FETCH_BOOKS',
   CREATE_BOOK: 'CREATE_BOOK',
   REMOVE_BOOK: 'REMOVE_BOOK',
   CHANGE_FILTER: 'CHANGE_FILTER',
 });
+
+export const fetchBooks = () => async (dispatch) => {
+  const response = await Bookstore.fetchBooks();
+
+  dispatch({ type: 'FETCH_BOOKS', payload: response });
+};
 
 export const createBook = (book) => ({
   type: ACTIONS.CREATE_BOOK,
