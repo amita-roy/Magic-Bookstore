@@ -1,27 +1,20 @@
-const CREATE_BOOK = 'CREATE_BOOK';
-const REMOVE_BOOK = 'REMOVE_BOOK';
-const CHANGE_FILTER = 'CHANGE_FILTER';
+export const ACTIONS = Object.freeze({
+  CREATE_BOOK: 'CREATE_BOOK',
+  REMOVE_BOOK: 'REMOVE_BOOK',
+  CHANGE_FILTER: 'CHANGE_FILTER',
+});
 
-const createBook = (book) => ({
-  type: CREATE_BOOK,
+export const createBook = (book) => ({
+  type: ACTIONS.CREATE_BOOK,
   payload: book,
 });
 
-const removeBook = (id) => ({
-  type: REMOVE_BOOK,
+export const removeBook = (id) => ({
+  type: ACTIONS.REMOVE_BOOK,
   payload: id,
 });
 
-const changeFilter = (filter) => ({
-  type: CHANGE_FILTER,
+export const changeFilter = (filter) => ({
+  type: ACTIONS.CHANGE_FILTER,
   payload: filter,
 });
-
-export {
-  createBook,
-  CREATE_BOOK,
-  removeBook,
-  REMOVE_BOOK,
-  CHANGE_FILTER,
-  changeFilter,
-};
