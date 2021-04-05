@@ -20,16 +20,19 @@ const BooksList = (props) => {
   };
 
   const displayBooks = () => {
-    if (bookFilter === 'All' || '') {
-      return books.map((book) => (
-        <Book key={book.id} book={book} handleChange={handleRemoveBook} />
-      ));
+    if (books) {
+      if (bookFilter === 'All' || '') {
+        return books.map((book) => (
+          <Book key={book.id} book={book} handleChange={handleRemoveBook} />
+        ));
+      }
+      return books
+        .filter((book) => book.category === bookFilter)
+        .map((book) => (
+          <Book key={book.id} book={book} handleChange={handleRemoveBook} />
+        ));
     }
-    return books
-      .filter((book) => book.category === bookFilter)
-      .map((book) => (
-        <Book key={book.id} book={book} handleChange={handleRemoveBook} />
-      ));
+    return <p>No Book to display!</p>;
   };
 
   return (

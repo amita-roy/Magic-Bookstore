@@ -13,6 +13,11 @@ class BooksApi {
     });
     return response.data;
   };
+
+  createBook = async (book) => {
+    const response = await client.post('/books', book);
+    return response;
+  };
 }
 
 export default new BooksApi();

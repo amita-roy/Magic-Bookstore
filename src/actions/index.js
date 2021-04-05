@@ -10,13 +10,14 @@ export const ACTIONS = Object.freeze({
 export const fetchBooks = () => async (dispatch) => {
   const response = await Bookstore.fetchBooks();
 
-  dispatch({ type: 'FETCH_BOOKS', payload: response });
+  dispatch({ type: ACTIONS.FETCH_BOOKS, payload: response });
 };
 
-export const createBook = (book) => ({
-  type: ACTIONS.CREATE_BOOK,
-  payload: book,
-});
+export const createBook = (book) => async (dispatch) => {
+  await Bookstore.createBook(book);
+
+  dispatch({ type: ACTIONS.CREATE_BOOK, payload: book });
+};
 
 export const removeBook = (id) => ({
   type: ACTIONS.REMOVE_BOOK,
